@@ -41,7 +41,7 @@ class BookingController extends Controller
             }
 
         $sewa_sepatu = $request->sewa_sepatu ? 50000 : 0;
-        $sewa_kostum = $request->sewa_kostum ? 450000 : 0;
+        $sewa_kostum = $request->sewa_kostum ? 45000 : 0;
 
         // total durasi dalam satuan menit (date_end - date_start)
         $total_durasi_in_minutes = Carbon::parse($request->date_end)->diffInMinutes($request->date_start);

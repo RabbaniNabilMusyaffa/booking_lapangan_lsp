@@ -1,85 +1,119 @@
 @extends('layouts.main')
+
 @section('content')
-  <section>
-    <h1 class="mt-5">Pilihan Lapangan</h1>
-    <div class="row">
-      <div class="col-lg-6 border p-4">
-        <h3>Indoor</h3>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card ">
-              <div class="card-body">
-                <h5>Reguler</h5>
-                <h6>Rp. 300.000/jam</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card ">
-              <div class="card-body">
-                <h5>Matras</h5>
-                <h6>Rp. 250.000/jam</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card ">
-              <div class="card-body">
-                <h5>Rumput</h5>
-                <h6>Rp. 200.000/jam</h6>
-              </div>
-            </div>
-          </div>
+    <style>
+        @font-face {
+            font-family: 'Plus Jakarta Sans';
+            src: url('fonts/PlusJakartaSans-Medium.ttf');
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .back-image {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            filter: blur(2px);
+        }
+    </style>
+    <div class="container mt-4">
+        <div class="row justify-content-center" style="min-height: 90vh">
+            <div class="col-md-7">
+                    <div class="card-body">
+                        <div class="text-center">
+                            {{-- <a class="navbar-brand">
+                                <h1 style="font-family: 'Poppins', sans-serif;">N-Field</h1>      
+                              </a> --}}
+                            <h3 class="mt-3">Tata Cara Penyewaan Lapangan</h3>
+                        </div>
+                        <ol class="mt-4">
+                            <li>Pilih lapangan yang tersedia (Indoor/Outdoor).</li>
+                            <li>Pilih jenis lapangan sesuai kebutuhan (Reguler/Matras/Rumput).</li>
+                            <li>Anda juga dapat menyewa kostum dan sepatu sebagai opsi tambahan.</li>
+                            <li>Isi formulir penyewaan dengan lengkap.</li>
+                            <li>Lakukan pembayaran sesuai dengan petunjuk yang diberikan.</li>
+                            <li>Tunggu konfirmasi dari pihak penyewa.</li>
+                        </ol>
+                        
+
+                        <!-- Modal Konfirmasi Keluar -->
+                        <div id="confirmModal" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Konfirmasi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Apakah Anda yakin ingin keluar?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button id="konfirmasiKeluarButton" type="button" class="btn btn-danger">Ya, Keluar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal Konfirmasi Keluar -->
+                    </div>
+
+                    <div class="card-group">
+                        <div class="card border-info">
+                            <div class="card-header text-center">
+                                Biaya Sewa Lapangan   <span><strong>Indoor</strong></span>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Indoor Reguler : Rp 300.000/Jam</li>
+                                    <li>Indoor Matras : Rp 250.000/Jam</li>
+                                    <li>Indoor Rumput : Rp 200.000/Jam</li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                        <div class="card border-info outdoor">
+                            <div class="card-header text-center">
+                                Biaya Sewa Lapangan   <span><strong>Outdoor</strong></span>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Outdoor Reguler : Rp 250.000/Jam</li>
+                                    <li>Outdoor Matras : Rp 200.000/Jam</li>
+                                    <li>Outdoor Rumput : Rp 150.000/Jam</li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                        <div class="card border-info">
+                            <div class="card-header text-center">
+                                Biaya Sewa Tambahan   <span><strong>Sepatu & Kostum</strong></span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Sewa Sepatu:</strong> Rp 50.000/Jam</p>
+                                <p><strong>Sewa Kostum:</strong> Rp 45.000/Jam</p>
+                            </div>
+                        </div>
+                    </div>
+   
         </div>
-      </div>
-      <div class="col-lg-6 border p-4">
-        <h3>Outdoor</h3>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card ">
-              <div class="card-body">
-                <h5>Reguler</h5>
-                <h6>Rp. 250.000/jam</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card ">
-              <div class="card-body">
-                <h5>Matras</h5>
-                <h6>Rp. 200.000/jam</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card ">
-              <div class="card-body">
-                <h5>Rumput</h5>
-                <h6>Rp. 150.000/jam</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h4>Tambahan</h4>
-      <ul>
-        <li>
-          <h5>sewa sepatu Rp. 50.000/jam</h5>
-        </li>
-        <li>
-          <h5>sewa kostum Rp. 45.000/jam</h5>
-        </li>
-      </ul>
     </div>
-  </section>
-  <section>
-    <h1 class="mt-3">Tata cara menyewa lapangan</h1>
-    <ol>
-      <li>Masuk ke menu booking</li>
-      <li>Isi kolom nama, no tlp penyewa</li>
-      <li>Pilih Jenis dan Lokasi Lapangan</li>
-      <li>Masukkan tgl mulai-selesai sewa</li>
-      <li>klik checkout</li>
-    </ol>
-  </section>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $('#keluarButton').click(function() {
+                $('#confirmModal').modal('show');
+            });
+
+            $('#konfirmasiKeluarButton').click(function() {
+                // Tambahkan kode di sini untuk menangani keluar
+                // Misalnya, mengarahkan pengguna ke halaman keluar
+            });
+        });
+    </script>
 @endsection
