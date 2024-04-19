@@ -21,24 +21,31 @@ class BookingController extends Controller
     // menampilkan halaman checkout
     public function checkout(Request $request)
     {
-        // melakukan query sesuai jenis & lokasi lapangan yang dipilih
-        $selected_lapangan = Lapangan::query()
-            ->where('lokasi', $request->lokasi)
-            ->where('jenis', $request->jenis)
-            ->first();
+    $selected_lapangan = Lapangan::query()
+        ->where('lokasi', $request->lokasi)
+        ->where('jenis', $request->jenis)
+        ->first();
 
-        $date_start = $request->date_start;
-        $date_end = $request->date_end;
+    $date_start = $request->date_start;
+    $date_end = $request->date_end;
 
-        $is_exist = Booking::query()
-            ->where('lapangan_id', $selected_lapangan->id)
-            ->whereBetween('date_start', [$date_start, $date_end])
-            ->orWhereBetween('date_end', [$date_start, $date_end])
-            ->get();
+    // Menggunakan operator 'AND' untuk memastikan bahwa lapangan dengan jenis dan lokasi yang sama
+    // Diperiksa hanya jika tanggal yang diminta berada dalam rentang tanggal yang dipesan
+    $is_exist = Booking::query()
+        ->where('lapangan_id', $selected_lapangan->id)
+        ->where(function ($query) use ($date_start, $date_end) {
+            $query->whereBetween('date_start', [$date_start, $date_end])
+                  ->orWhereBetween('date_end', [$date_start, $date_end])
+                  ->orWhere(function ($query) use ($date_start, $date_end) {
+                      $query->where('date_start', '<', $date_start)
+                            ->where('date_end', '>', $date_end);
+                  });
+        })
+        ->get();
 
-            if (count($is_exist) > 0) {
-               return back()->with('failed-booking', $is_exist)->withInput($request->input());
-            }
+    if (count($is_exist) > 0) {
+        return back()->with('failed-booking', $is_exist)->withInput($request->input());
+    }
 
         $sewa_sepatu = $request->sewa_sepatu ? 50000 : 0;
         $sewa_kostum = $request->sewa_kostum ? 45000 : 0;
@@ -46,7 +53,6 @@ class BookingController extends Controller
         // total durasi dalam satuan menit (date_end - date_start)
         $total_durasi_in_minutes = Carbon::parse($request->date_end)->diffInMinutes($request->date_start);
         $total_harga = (($selected_lapangan->price / 60) + ($sewa_kostum /60) + ($sewa_sepatu/60)) * $total_durasi_in_minutes;
-            // dd($total_durasi_in_minutes, ($selected_lapangan->price / 60));
         $name = $request->name;
         $no_tlp = $request->no_tlp;
 

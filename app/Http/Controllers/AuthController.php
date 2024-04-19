@@ -49,7 +49,7 @@ class AuthController extends Controller
             return redirect()->intended(route('home'));
         }
 
-        return back()->withInput()->with('failed', 'gagal login, data user tidak ditemukan');
+        return back()->withInput()->with('failed', 'Data user tidak ditemukan, silahkan coba lagi');
     }
     public function logout(Request $request)
     {

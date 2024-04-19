@@ -19,9 +19,9 @@
             filter: blur(2px);
         }
     </style>
-    <div class="container mt-4">
+    <div class="container mt-4 ">
         <div class="row justify-content-center" style="min-height: 90vh">
-            <div class="col-md-7">
+            <div class="col-md-7 card border-black">
                     <div class="card-body">
                         <div class="text-center">
                             {{-- <a class="navbar-brand">
@@ -30,12 +30,13 @@
                             <h3 class="mt-3">Tata Cara Penyewaan Lapangan</h3>
                         </div>
                         <ol class="mt-4">
+                            <h4 class="mb-4">Selamat datang di penyewaan lapangan futsal N-Field, silahkan baca tata cara penyewaan lapangan dibawah ini sebelum menyewa lapangan.</h4>
                             <li>Pilih lapangan yang tersedia (Indoor/Outdoor).</li>
                             <li>Pilih jenis lapangan sesuai kebutuhan (Reguler/Matras/Rumput).</li>
                             <li>Anda juga dapat menyewa kostum dan sepatu sebagai opsi tambahan.</li>
                             <li>Isi formulir penyewaan dengan lengkap.</li>
-                            <li>Lakukan pembayaran sesuai dengan petunjuk yang diberikan.</li>
-                            <li>Tunggu konfirmasi dari pihak penyewa.</li>
+                            <li>Lakukan pembayaran sesuai dengan petunjuk yang tertera.</li>
+                            <li class="mb-4">Setelah pembayaran telah berhasil dilakukan, pihak penyewa akan menghubungi anda melalui nomor telepon yang telah anda masukkan.</li>
                         </ol>
                         
 
@@ -62,9 +63,9 @@
                         <!-- End Modal Konfirmasi Keluar -->
                     </div>
 
-                    <div class="card-group">
-                        <div class="card border-info">
-                            <div class="card-header text-center">
+                    <div class="card-group mb-3">
+                        <div class="card border-primary">
+                            <div class="card-header border-primary text-center">
                                 Biaya Sewa Lapangan   <span><strong>Indoor</strong></span>
                             </div>
                             <div class="card-body">
@@ -76,8 +77,8 @@
                             </div>
                         </div>
                     
-                        <div class="card border-info outdoor">
-                            <div class="card-header text-center">
+                        <div class="card border-primary outdoor">
+                            <div class="card-header border-primary text-center">
                                 Biaya Sewa Lapangan   <span><strong>Outdoor</strong></span>
                             </div>
                             <div class="card-body">
@@ -89,8 +90,8 @@
                             </div>
                         </div>
                     
-                        <div class="card border-info">
-                            <div class="card-header text-center">
+                        <div class="card border-primary">
+                            <div class="card-header text-center border-primary">
                                 Biaya Sewa Tambahan   <span><strong>Sepatu & Kostum</strong></span>
                             </div>
                             <div class="card-body">

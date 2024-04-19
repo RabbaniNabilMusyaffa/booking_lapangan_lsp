@@ -21,15 +21,15 @@
       }
   </style>
 
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-  <ol class="breadcrumb mt-4">
+<nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
+  <ol class="breadcrumb mt-2">
     <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('home') }}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Riwayat Transaksi</li>
   </ol>
 </nav>
-<div class="card mt-4">
-  <div class="card-header bg-info">
-    <h3 style="padding-left: 6px; margin-top:4px;">Daftar Booking</h3>
+<div class="card mt-4 border-dark">
+  <div class="card-header bg-primary border-dark">
+    <h3 style="padding-left: 6px; margin-top:4px; color: white;">Daftar Booking</h3>
   </div>
   <div class="card-body">
     <table class="table table-stripped table-bordered shadow-sm">

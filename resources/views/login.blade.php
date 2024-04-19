@@ -25,8 +25,8 @@
           {{ session('failed') }}
         </div>
       @endif
-      <div class="card">
-        <div class="card-header bg-primary">
+      <div class="card border-dark">
+        <div class="card-header bg-primary border-dark">
           <h4 class="text-center" style="color: #f0f0f0;">Login</h4>
         </div>
         <div class="card-body">

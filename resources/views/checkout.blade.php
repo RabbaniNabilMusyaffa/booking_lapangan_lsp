@@ -17,23 +17,23 @@
 @endpush
 @section('content')
 
-  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
     <ol class="breadcrumb mt-4">
       <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('home') }}">Home</a></li>
-      <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('booking.index') }}">Booking</a></li>
+      <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ route('booking.index') }}">Booking Lapangan</a></li>
       <li class="breadcrumb-item active" aria-current="page">Checkout</li>
     </ol>
   </nav>
   <div class="row mt-5 justify-content-center">
     <div class="col-lg-5">
-      <div class="card">
-        <div class="card-header bg-success-subtle">
-          <h4 style="margin-top: 6px; padding-left:4px" class="text-center">Detail Booking Anda</h4>
+      <div class="card border-dark">
+        <div class="card-header bg-primary">
+          <h4 style="margin-top: 6px; padding-left:4px; color: white;" class="text-center">Detail Booking Anda</h4>
         </div>
-        <div class="card-body">
+        <div class="card-body bg-dark">
           <form action="{{route('checkout')}}" method="POST">
             @csrf
-            <table class="table">
+            <table class="table ">
               <tbody>
                 <tr>
                   <td class="text-fit fw-bold">Atas Nama</td>
@@ -102,23 +102,23 @@
             
               </tbody>
             </table>
-            <h4 class="d-flex justify-content-between">
-              <span>Total Harga</span>
+            <h4 class="d-flex justify-content-between text-primary">
+              <span>Total Harga : </span>
               <span class="text-primary fw-bold">Rp. {{ number_format($total_harga) }}</span>
               <input type="hidden" name="total_harga" id="total-harga" value="{{$total_harga}}">
             </h4>
-            <h4 class="d-flex justify-content-between mt-4">
-              <span>Jumlah</span>
+            <h4 class="d-flex justify-content-between mt-4 text-primary">
+              <span>Jumlah : </span>
               <div class="d-flex">
                 <input type="number" style="text-align: end; padding-right: 0" class="form-control  " id="input-tunai" min="{{$total_harga}}" value="0" name="pay" >
               </div>
             </h4>
-            <h4 class="d-flex justify-content-between mt-3">
-              <span>Kembalian</span>
+            <h4 class="d-flex justify-content-between mt-3 text-primary">
+              <span>Kembalian : </span>
               <span class=" fw-bold" id="kembalian">Rp.0</span>
             </h4>
 
-            <button class="btn btn-primary w-100 mt-3" type="submit">Booking</button>
+            <button class="btn btn-primary w-100 mt-3 border-dark" type="submit">Booking</button>
           </form>
 
         </div>

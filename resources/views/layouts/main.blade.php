@@ -10,10 +10,10 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container">
       <a class="navbar-brand">
-        <h1 style="font-family: 'Poppins', sans-serif;">N-Field</h1>      
+        <h1 style="font-family: 'Poppins', sans-serif; color: white;">N-Field</h1>      
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,19 +21,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <li class="nav-item ms-5">
+            <a class="nav-link active" aria-current="page" style="color: white;" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link @guest disabled @endguest" href="{{ route('booking.index') }}">Booking</a>
+            <a class="nav-link @guest disabled @endguest" style="color: white;" href="{{ route('booking.index') }}">Booking</a>
           </li>
          
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('riwayat.index') }}">Riwayat Booking</a>
+              <a class="nav-link" style="color: white;" href="{{ route('riwayat.index') }}">Riwayat Booking</a>
             </li>
         </ul>
         @auth
-          <a class="btn px-3 btn btn-outline-danger confirmLogout">Logout</a>
+          <a class="btn px-3 btn btn-outline-danger confirmLogout bg-danger border-dark" style="color: white;">Logout</a>
         @endauth
         @guest
           <a class="btn px-3 me-2 btn-outline-primary" href="{{ route('regis.view') }}">Daftar</a>
@@ -50,16 +50,16 @@
   @stack('scripts')
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
     $(document).ready(function () {
 
         $('.confirmLogout').click(function (e) {
             e.preventDefault();
 
             Swal.fire({
-                title: "Apa anda yakin?",
-                text: "Anda akan keluar!",
+                title: "Apa anda yakin ingin keluar?",
+                text: "Anda akan kembali ke halaman login",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -74,7 +74,7 @@
         });
 
     });
-</script>
+  </script>
 
 </body>
 
